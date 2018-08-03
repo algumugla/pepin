@@ -7,13 +7,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.mockito.BDDMockito.given;
 
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.hamcrest.core.Is.is;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(GreetingController.class)
@@ -27,6 +26,7 @@ public class GreetingControllerTest {
 
     @Test
     public void getGreeting() throws Exception {
+
         Greeting greeting = new Greeting(1, "toto");
 
         given(greetingController.greeting("toto")).willReturn(greeting);
@@ -38,10 +38,10 @@ public class GreetingControllerTest {
 
     @Test
     public void testGreeting() {
+
         GreetingController greetingController = new GreetingController();
 
         Greeting greeting1 = greetingController.greeting("toto");
-
 
         assertThat(greeting1.getId()).isEqualTo(1);
         assertThat(greeting1.getContent()).isEqualTo("toto");
@@ -50,9 +50,6 @@ public class GreetingControllerTest {
 
         assertThat(greeting2.getId()).isEqualTo(2);
         assertThat(greeting2.getContent()).isEqualTo("tutu");
+
     }
-
-
-
-
 }
